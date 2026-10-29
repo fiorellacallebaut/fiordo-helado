@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Design tokens de Fiordo Helado.
+ * Dos capas: primitivas (valores crudos) y semánticas (uso).
+ * Los componentes usan solo las semánticas. Los nombres coinciden con Figma.
+ * Se resetean los valores por defecto de Tailwind para que solo existan estos tokens.
+ */
+
+/* ---------- Primitivas ---------- */
+@theme static {
+  --color-*: initial;
+  --spacing-*: initial;
+  --radius-*: initial;
+  --text-*: initial;
+  --font-*: initial;
+
+  --color-transparent: transparent;
+
+  /* lemon: base #F5FFC6 en 100 */
+  --color-lemon-50: #FAFFE3;
+  --color-lemon-100: #F5FFC6;
+  --color-lemon-200: #E1EEA0;
+  --color-lemon-300: #CAD689;
+  --color-lemon-400: #ACB76C;
+  --color-lemon-500: #8F9A4F;
+  --color-lemon-600: #737D32;
+  --color-lemon-700: #596123;
+  --color-lemon-800: #40461A;
+  --color-lemon-900: #292D10;
+
+  /* sky: base #B4E1FF en 200 */
+  --color-sky-50: #EFF8FE;
+  --color-sky-100: #DBF0FE;
+  --color-sky-200: #B4E1FF;
+  --color-sky-300: #8FCCF4;
+  --color-sky-400: #73AFD6;
+  --color-sky-500: #5793B9;
+  --color-sky-600: #3C789D;
+  --color-sky-700: #215E81;
+  --color-sky-800: #18445D;
+  --color-sky-900: #0F2C3D;
+
+  /* pink: base #FFACE4 en 300 */
+  --color-pink-50: #FEF4FA;
+  --color-pink-100: #FEE7F6;
+  --color-pink-200: #FECEED;
+  --color-pink-300: #FFACE4;
+  --color-pink-400: #EE81CE;
+  --color-pink-500: #CF64B0;
+  --color-pink-600: #AF4893;
+  --color-pink-700: #912A77;
+  --color-pink-800: #6C1958;
+  --color-pink-900: #461039;
+
+  /* lavender: base #AE96E6 en 400 */
+  --color-lavender-50: #F7F6FC;
+  --color-lavender-100: #EEEAF8;
+  --color-lavender-200: #DCD5F3;
+  --color-lavender-300: #C8BAED;
+  --color-lavender-400: #AE96E6;
+  --color-lavender-500: #9673DC;
+  --color-lavender-600: #7C57BF;
+  --color-lavender-700: #633DA2;
+  --color-lavender-800: #482C76;
+  --color-lavender-900: #2E1C4E;
+
+  /* cocoa: base #593C3C en 800. También es la escala de neutros cálidos. */
+  --color-cocoa-50: #F8F6F6;
+  --color-cocoa-100: #F1ECEC;
+  --color-cocoa-200: #E3D9D9;
+  --color-cocoa-300: #D3C1C0;
+  --color-cocoa-400: #C0A2A1;
+  --color-cocoa-500: #AF8282;
+  --color-cocoa-600: #946969;
+  --color-cocoa-700: #765252;
+  --color-cocoa-800: #593C3C;
+  --color-cocoa-900: #392525;
+
+  /* Estados */
+  --color-success-100: #DDF5E3;
+  --color-success-700: #1E6B3C;
+  --color-error-100: #FDE3E1;
+  --color-error-700: #B3261E;
+
+  /* Espaciado: la clase coincide con el valor en px (p-16 = 16px) */
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-16: 16px;
+  --spacing-24: 24px;
+  --spacing-48: 48px;
+
+  /* Radios */
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  /* Tipografía: tamaños fluidos de mobile (375px) a desktop (1280px) */
+  --text-display: clamp(2.5rem, 1.878rem + 2.652vw, 4rem);
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+  --text-display--font-weight: 700;
+
+  --text-h1: clamp(2rem, 1.586rem + 1.768vw, 3rem);
+  --text-h1--line-height: 1.1;
+  --text-h1--letter-spacing: -0.01em;
+  --text-h1--font-weight: 700;
+
+  --text-h2: clamp(1.5rem, 1.293rem + 0.884vw, 2rem);
+  --text-h2--line-height: 1.2;
+  --text-h2--font-weight: 600;
+
+  --text-body-lg: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);
+  --text-body-lg--line-height: 1.5;
+  --text-body-lg--font-weight: 400;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.5;
+  --text-body--font-weight: 400;
+
+  --text-caption: clamp(0.8125rem, 0.787rem + 0.11vw, 0.875rem);
+  --text-caption--line-height: 1.4;
+  --text-caption--font-weight: 500;
 }
 
+/* Familias: apuntan a las variables que crea next/font en app/layout.tsx */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-parkinsans), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ---------- Semánticas ---------- */
+@theme static {
+  --color-primary: var(--color-pink-300);
+  --color-primary-hover: var(--color-pink-400);
+  --color-on-primary: var(--color-cocoa-900);
+
+  --color-secondary: var(--color-sky-200);
+  --color-on-secondary: var(--color-cocoa-800);
+
+  --color-accent: var(--color-lavender-400);
+  --color-on-accent: var(--color-cocoa-900);
+
+  --color-surface: var(--color-lemon-50);
+  --color-surface-muted: var(--color-lemon-100);
+  --color-surface-inverse: var(--color-cocoa-800);
+  --color-on-inverse: var(--color-lemon-50);
+
+  --color-text: var(--color-cocoa-800);
+  --color-text-muted: var(--color-cocoa-700);
+
+  --color-border: var(--color-cocoa-200);
+  --color-border-strong: var(--color-cocoa-500);
+
+  --color-success: var(--color-success-700);
+  --color-success-surface: var(--color-success-100);
+  --color-error: var(--color-error-700);
+  --color-error-surface: var(--color-error-100);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    font-family: --theme(--font-body);
   }
-}
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
