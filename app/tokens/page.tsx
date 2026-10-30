@@ -5,6 +5,7 @@ import SpacingSample from "@/components/tokens/SpacingSample";
 import Swatch from "@/components/tokens/Swatch";
 import TokenSection from "@/components/tokens/TokenSection";
 import TypeSpecimen from "@/components/tokens/TypeSpecimen";
+import WeightSample from "@/components/tokens/WeightSample";
 import { contrastRatio } from "@/lib/contrast";
 import {
   colorPairs,
@@ -16,6 +17,7 @@ import {
   spacing,
   stateColors,
   typeStyles,
+  weightTokens,
 } from "./tokens";
 
 export const metadata: Metadata = {
@@ -108,6 +110,18 @@ export default function TokensPage() {
         <div className="flex flex-col gap-24">
           {typeStyles.map((style) => (
             <TypeSpecimen key={style.name} style={style} />
+          ))}
+        </div>
+      </TokenSection>
+
+      <TokenSection
+        id="pesos"
+        title="Pesos de body y body-lg"
+        description="Variantes regular (400), medium (500) y light (300). Se aplican con font-(weight:--token) junto a text-body o text-body-lg."
+      >
+        <div className="grid grid-cols-1 gap-16 sm:grid-cols-3">
+          {weightTokens.map((weightToken) => (
+            <WeightSample key={weightToken.token} weightToken={weightToken} />
           ))}
         </div>
       </TokenSection>

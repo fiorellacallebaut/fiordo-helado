@@ -114,6 +114,25 @@ export const typeStyles: TypeStyle[] = [
   { name: "caption", className: "font-body text-caption", family: "DM Sans", mobile: "13px", desktop: "14px", weight: 500, lineHeight: "1.4" },
 ];
 
+export type WeightToken = {
+  token: string;
+  style: string;
+  variant: "regular" | "medium" | "light";
+  weight: number;
+  className: string;
+};
+
+// Variantes de peso de body y body-lg. Ningún utility de Tailwind las lee solo:
+// se aplican con font-(weight:--token). className va escrito completo para que Tailwind lo detecte.
+export const weightTokens: WeightToken[] = [
+  { token: "text-body-lg--font-weight-regular", style: "body-lg", variant: "regular", weight: 400, className: "font-body text-body-lg font-(weight:--text-body-lg--font-weight-regular)" },
+  { token: "text-body-lg--font-weight-medium", style: "body-lg", variant: "medium", weight: 500, className: "font-body text-body-lg font-(weight:--text-body-lg--font-weight-medium)" },
+  { token: "text-body-lg--font-weight-light", style: "body-lg", variant: "light", weight: 300, className: "font-body text-body-lg font-(weight:--text-body-lg--font-weight-light)" },
+  { token: "text-body--font-weight-regular", style: "body", variant: "regular", weight: 400, className: "font-body text-body font-(weight:--text-body--font-weight-regular)" },
+  { token: "text-body--font-weight-medium", style: "body", variant: "medium", weight: 500, className: "font-body text-body font-(weight:--text-body--font-weight-medium)" },
+  { token: "text-body--font-weight-light", style: "body", variant: "light", weight: 300, className: "font-body text-body font-(weight:--text-body--font-weight-light)" },
+];
+
 export const spacing = [
   { name: "spacing-4", value: "4px" },
   { name: "spacing-8", value: "8px" },

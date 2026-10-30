@@ -111,11 +111,24 @@
 
   --text-body-lg: clamp(1.125rem, 1.073rem + 0.221vw, 1.25rem);
   --text-body-lg--line-height: 1.5;
-  --text-body-lg--font-weight: 400;
+  /*
+   * body y body-lg tienen variantes de peso (regular, medium, light), que son los tokens
+   * que existen en Figma. Tailwind v4 solo lee el peso de text-<nombre> desde
+   * --text-<nombre>--font-weight, así que ese nombre se mantiene como alias del regular.
+   * Sin el alias, text-body no fijaría font-weight y heredaría el del padre (p. ej. un <strong>).
+   * El alias no tiene token propio en Figma: es solo para Tailwind.
+   */
+  --text-body-lg--font-weight: var(--text-body-lg--font-weight-regular);
+  --text-body-lg--font-weight-regular: 400;
+  --text-body-lg--font-weight-medium: 500;
+  --text-body-lg--font-weight-light: 300;
 
   --text-body: 1rem;
   --text-body--line-height: 1.5;
-  --text-body--font-weight: 400;
+  --text-body--font-weight: var(--text-body--font-weight-regular);
+  --text-body--font-weight-regular: 400;
+  --text-body--font-weight-medium: 500;
+  --text-body--font-weight-light: 300;
 
   --text-caption: clamp(0.8125rem, 0.787rem + 0.11vw, 0.875rem);
   --text-caption--line-height: 1.4;
