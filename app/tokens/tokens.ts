@@ -76,6 +76,7 @@ export const colorPairs: ColorPair[] = [
   { fg: "on-primary", bg: "primary-hover", use: "Botón primario (hover)", minRatio: 4.5 },
   { fg: "on-secondary", bg: "secondary", use: "Botón secundario", minRatio: 4.5 },
   { fg: "on-accent", bg: "accent", use: "Badge / acento", minRatio: 4.5 },
+  { fg: "on-primary", bg: "surface", use: "Texto del hero y de eventos", minRatio: 4.5 },
   { fg: "text", bg: "surface", use: "Texto general", minRatio: 4.5 },
   { fg: "text", bg: "surface-muted", use: "Texto en bloque alternado", minRatio: 4.5 },
   { fg: "text-muted", bg: "surface", use: "Texto secundario", minRatio: 4.5 },
@@ -134,12 +135,17 @@ export const weightTokens: WeightToken[] = [
 ];
 
 export const spacing = [
+  { name: "spacing-0", value: "0px" },
   { name: "spacing-4", value: "4px" },
   { name: "spacing-8", value: "8px" },
   { name: "spacing-16", value: "16px" },
   { name: "spacing-24", value: "24px" },
   { name: "spacing-48", value: "48px" },
+  { name: "spacing-100", value: "100px" },
+  { name: "spacing-page-padding", value: "16px → 24px" },
 ];
+
+export const layout = [{ name: "container-content-max-width", value: "1152px" }];
 
 export const radii = [
   { name: "radius-md", value: "8px" },

@@ -84,11 +84,18 @@
   --color-error-700: #B3261E;
 
   /* Espaciado: la clase coincide con el valor en px (p-16 = 16px) */
+  --spacing-0: 0px;
   --spacing-4: 4px;
   --spacing-8: 8px;
   --spacing-16: 16px;
   --spacing-24: 24px;
   --spacing-48: 48px;
+  --spacing-100: 100px;
+
+  /* Layout: en Figma tiene modos Desktop/Mobile. Se resuelve como la tipografía, con un
+     clamp() fluido de mobile (375px, 16px) a desktop (1280px, 24px). */
+  --spacing-page-padding: clamp(1rem, 0.793rem + 0.884vw, 1.5rem);
+  --container-content-max-width: 1152px;
 
   /* Radios */
   --radius-md: 8px;
