@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContrastTable from "@/components/tokens/ContrastTable";
+import LayoutSample from "@/components/tokens/LayoutSample";
 import RadiusSample from "@/components/tokens/RadiusSample";
 import SpacingSample from "@/components/tokens/SpacingSample";
 import Swatch from "@/components/tokens/Swatch";
@@ -7,10 +8,12 @@ import TokenSection from "@/components/tokens/TokenSection";
 import TypeSpecimen from "@/components/tokens/TypeSpecimen";
 import WeightSample from "@/components/tokens/WeightSample";
 import { contrastRatio } from "@/lib/contrast";
+import Button from "@/components/ui/Button";
 import {
   colorPairs,
   colorScales,
   isDarkBackground,
+  layout,
   radii,
   semanticColors,
   semanticHex,
@@ -41,6 +44,7 @@ export default function TokensPage() {
           Primitivas y semánticas definidas en <code>app/globals.css</code>. Los componentes usan
           solo las semánticas.
         </p>
+        <Button href="/">Volver al inicio</Button>
       </header>
 
       <TokenSection
@@ -130,6 +134,18 @@ export default function TokensPage() {
         <div className="flex flex-col gap-16">
           {spacing.map(({ name, value }) => (
             <SpacingSample key={name} name={name} value={value} />
+          ))}
+        </div>
+      </TokenSection>
+
+      <TokenSection
+        id="layout"
+        title="Layout"
+        description="Ancho máximo del contenido. El padding lateral de página (spacing-page-padding) está en Espaciado y escala entre 375px y 1280px."
+      >
+        <div className="flex flex-col gap-16">
+          {layout.map(({ name, value }) => (
+            <LayoutSample key={name} name={name} value={value} />
           ))}
         </div>
       </TokenSection>
